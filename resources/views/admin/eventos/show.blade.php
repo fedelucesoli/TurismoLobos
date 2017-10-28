@@ -7,18 +7,18 @@
 
 <div class="col-md-10 col-md-offset-2">
 
-  <h4 class="text-muted">{{$item->categoria}}</h4>
-  <h1>{{$item->nombre}}</h1>
+  <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
+  <h1>{{$item->titulo}}</h1>
   <hr>
 </div>
 <div class="col-md-12">
   {{ Form::open([
-    'url' => 'admin/eventos',
+    'route' => ["admin.eventos.update", $item->id],
     'files' => true,
     'class' => 'form-horizontal',
-    'method' => 'POST'
+    'method' => 'PUT'
     ])}}
-
+    {{ Form::hidden('_method', 'PUT')}}
   <div class="form-group @if ($errors->has('titulo')) has-error @endif">
     {{ Form::label('titulo', "Titulo", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
@@ -30,7 +30,7 @@
   <div class="form-group @if ($errors->has('categoria')) has-error @endif">
     {{ Form::label('categoria', "Categoria", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
-      {{ Form::select('categoria', $categorias->pluck('nombre', 'id'), $item->id, ['placeholder' => 'Categoria', 'class' => 'select form-control']) }}
+      {{ Form::select('categoria', $categorias->pluck('nombre', 'id'), $item->categoria->id, ['placeholder' => 'Categoria', 'class' => 'select form-control']) }}
       @if ($errors->has('categoria'))<p class="help-block">{{ $errors->first('categoria') }}</p>@endif
     </div>
   </div>
@@ -52,7 +52,7 @@
   <div class="form-group @if ($errors->has('lugar')) has-error @endif">
     {{ Form::label('lugar', "Lugar", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
-      {{ Form::select('lugar', $lugares->pluck('nombre', 'id'),$item->id, ['placeholder' => 'Lugar', 'class' => 'select form-control']) }}
+      {{ Form::select('lugar', $lugares->pluck('nombre', 'id'), $item->lugar_id, ['placeholder' => 'Lugar', 'class' => 'select form-control']) }}
       @if ($errors->has('lugar'))<p class="help-block">{{ $errors->first('categoria') }}</p>@endif
     </div>
   </div>

@@ -25,7 +25,9 @@ class CreateEventosTable extends Migration
 
           $table->string('badge')->nullable();
 
-          $table->string('categoria');
+          $table->integer('categoria_id')->unsigned();
+          $table->foreign('categoria_id')->references('id')->on('categorias');
+
           $table->integer('lugar_id')->unsigned();
           $table->foreign('lugar_id')->references('id')->on('lugares');
 

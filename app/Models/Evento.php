@@ -13,7 +13,7 @@ class Evento extends Model
   'fecha',
   'hora',
   'badge',
-  'categoria',
+  'categoria_id',
   'lugar',
   'lugar_id',
   'superevento',
@@ -22,4 +22,7 @@ class Evento extends Model
   'fecha_fin',
   'activo',
 ];
+  public function categoria(){
+        return $this->belongsTo('App\Models\Categoria', 'categoria_id', 'id');
+    }
 }

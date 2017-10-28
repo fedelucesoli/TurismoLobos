@@ -18,7 +18,7 @@
     <table class="table table-hover" cellspacing="0" width="100%" style="margin-top:25px;">
         <thead>
             <tr>
-              <th style="width:7%"><h5>#</h5></th>
+              {{-- <th style="width:7%"><h5>#</h5></th> --}}
               <th><h5>Nombre</h5></th>
               <th style="width:10%"><h5 >Estado</h5></th>
               <th style="width: 25%"><h5 >Acciones</h5></th>
@@ -27,7 +27,7 @@
         <tbody>
           @foreach ($gastronomia as $item)
             <tr>
-              <td style="vertical-align: middle"><h6>{{$item->id}}</h6></td>
+              {{-- <td style="vertical-align: middle"><h6>{{$item->id}}</h6></td> --}}
 
               <td><h4 data-href="{{route('admin.gastronomia.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria}}</small></h4></td>
               <td style="vertical-align: middle">
