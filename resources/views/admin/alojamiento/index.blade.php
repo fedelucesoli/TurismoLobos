@@ -17,7 +17,6 @@
     <table class="table table-striped" cellspacing="0" width="100%" style="margin-top:25px;">
         <thead>
             <tr>
-              <th style="width:7%"><h5>#</h5></th>
               <th><h5>Nombre</h5></th>
               <th style="width:10%"><h5 >Estado</h5></th>
               <th style="width: 25%"><h5 >Acciones</h5></th>
@@ -26,12 +25,23 @@
         <tbody>
           @foreach ($alojamientos as $item)
             <tr>
-              <td style="vertical-align: middle"><h6>{{$item->id}}</h6></td>
+              {{-- <td style="vertical-align: middle"><h6>{{$item->id}}</h6></td> --}}
 
-              <td><h4 data-href="{{route('admin.alojamiento.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria}}</small></h4></td>
+              <td><h4 data-href="{{route('admin.alojamiento.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria->nombre}}</small></h4></td>
               <td style="vertical-align: middle">
-                @component('admin.partials.activo', ['item' => $item, 'url' => 'alojamiento'])
-                @endcomponent
+                <button
+                  type="button"
+                  onclick="toggleEstado()"
+                  @if ($item->activo)
+                    class="estado btn-xs btn btn-info">
+                    Publicado
+
+                  @else
+                    class="estado btn-xs btn btn-success">
+                    Borrador
+                  @endif
+                </button>
+
               </td>
               <td style="vertical-align: middle">
                 <a role="button" class="btn btn-default btn-sm" href="{{route('admin.gastronomia.edit', $item->id)}}"><i class="fa fa-pencil"> </i> Editar</a>
@@ -45,7 +55,7 @@
        </tbody>
     </table>
   @endisset
-
+{{ $alojamientos->links() }}
 </div>
 
 @component('admin.partials.modal', [

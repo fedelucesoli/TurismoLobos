@@ -33,11 +33,24 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
+      if ($request->_method === 'PUT') {
+        $item = Categoria::find($request->id);
+        $item->nombre = $request->nombre;
+        $item->parent = $request->parent;
+        $item->slug = Str::slug($request->nombre);
+        $item->save;
+        return response()->json([
+          'nombre' => $item->nombre,
+          'slug' => Str::slug($item->nombre),
+          'parent' => $item->parent,
+          'id' => $item->id,
+        ], 200);
+      }
       $item = new Categoria;
       $item->nombre = $request->nombre;
       $item->parent = $request->parent;
       $item->slug = Str::slug($request->nombre);
-      $item->id_usuario = $request->user()->id;
+      $item->usuario_id = $request->user()->id;
       if ($item->save()) {
         return response()->json([
           'nombre' => $item->nombre,

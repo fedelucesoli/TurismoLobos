@@ -23,16 +23,17 @@ class CreateGastronomiasTable extends Migration
           $table->string('email')->nullable()	;
           $table->string('horarios')->nullable()	;
 
-          // $table->integer('votos');
-          // $table->integer('votantes');
-
           $table->decimal('lng', 11, 7)->nullable()	;
           $table->decimal('lat', 11, 7)->nullable()	;
 
-          $table->string('categoria')->nullable()	;
+          $table->integer('categoria_id')->unsigned();
+          $table->foreign('categoria_id')->references('id')->on('categorias');
+
           $table->string('estrellas')->nullable()	;
           $table->boolean('activo')->default(0);
-          $table->boolean('id_usuario');
+          
+          $table->integer('usuario_id')->unsigned();
+          $table->foreign('usuario_id')->references('id')->on('users');
 
           $table->timestamps();
         });

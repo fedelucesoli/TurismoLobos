@@ -7,7 +7,7 @@
 
 <div class="col-md-10 col-md-offset-2">
 
-  <h4 class="text-muted">{{$item->categoria}}</h4>
+  <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
   <h1>{{$item->nombre}}</h1>
   <hr>
 </div>
@@ -29,7 +29,7 @@
   <div class="form-group @if ($errors->has('categoria')) has-error @endif">
     {{ Form::label('categoria', "Categoria", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
-      {{ Form::text('categoria', $item->categoria, array('class' => 'form-control')) }}
+      {{ Form::select('categoria', $categorias->pluck('nombre', 'id'), $item->categoria->id, ['placeholder' => 'Categoria', 'class' => 'select form-control']) }}
       @if ($errors->has('categoria'))<p class="help-block">{{ $errors->first('categoria') }}</p>@endif
     </div>
   </div>

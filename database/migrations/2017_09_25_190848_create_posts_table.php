@@ -24,7 +24,8 @@ class CreatePostTable extends Migration
             $table->string('foto')->nullable();
             $table->string('badge')->nullable();
 
-            $table->string('categoria');
+            $table->integer('categoria_id')->unsigned();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
 
             $table->timestamps();
         });

@@ -21,4 +21,7 @@ class Gastronomia extends Model
       'id_usuario',
       'horarios'
       ];
+      public function categoria(){
+            return $this->belongsTo('App\Models\Categoria', 'categoria_id', 'id');
+        }
 }

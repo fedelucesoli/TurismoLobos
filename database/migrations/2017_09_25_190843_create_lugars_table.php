@@ -22,14 +22,17 @@ class CreateLugarsTable extends Migration
           $table->string('telefono')->nullable()	;
           $table->string('web')->nullable()	;
           $table->string('email')->nullable()	;
-          $table->string('categoria');
-          
+          $table->integer('categoria_id')->unsigned();
+          $table->foreign('categoria_id')->references('id')->on('categorias');
+
 
           $table->decimal('lng', 11, 7)->nullable()	;
           $table->decimal('lat', 11, 7)->nullable()	;
 
           $table->boolean('activo')->default(0);
-          $table->boolean('id_usuario');
+          
+          $table->integer('usuario_id')->unsigned();
+          $table->foreign('usuario_id')->references('id')->on('users');
 
           $table->timestamps();
         });

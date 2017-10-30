@@ -54,12 +54,12 @@ class GastronomiaController extends Controller
         $item->email = $request->email;
         $item->lng = $request->lng;
         $item->lat = $request->lat;
-        $item->categoria = $request->categoria;
+        $item->categoria_id = $request->categoria;
         $item->estrellas = $request->estrellas;
         $item->horarios = $request->horarios;
 
         $item->activo = 0;
-        $item->id_usuario = $request->user()->id;
+        $item->usuario_id = $request->user()->id;
         $item->save();
 
         if ($item->save()) {
@@ -74,6 +74,7 @@ class GastronomiaController extends Controller
     public function show($id)
     {
       $data['item'] = Gastronomia::find($id);
+      $data['categorias'] = Categoria::where('parent', 'gastronomia')->get();
 
         if(is_null($data['item'])){
           $request->session()->flash('status', ':( No se encuentra ese registro!');
@@ -86,7 +87,9 @@ class GastronomiaController extends Controller
 
     public function edit($gastronomia)
     {
-      $data['item'] = Gastronomia::find($gastronomia);;
+      $data['item'] = Gastronomia::find($gastronomia);
+      $data['categorias'] = Categoria::where('parent', 'gastronomia')->get();
+
       $data['map'] = $this->mapa->showMarkerMap($data['item']);
 
       return view('admin.gastronomia.show', $data);
@@ -118,11 +121,11 @@ class GastronomiaController extends Controller
       $item->email = $request->email;
       $item->lng = $request->lng;
       $item->lat = $request->lat;
-      $item->categoria = $request->categoria;
+      $item->categoria_id = $request->categoria;
       $item->estrellas = $request->estrellas;
       $item->horarios = $request->horarios;
 
-      $item->id_usuario = $request->user()->id;
+      $item->usuario_id = $request->user()->id;
       $item->save();
 
       return redirect()->route('admin.gastronomia.show', $id)->with('success', 'Item actualizado');

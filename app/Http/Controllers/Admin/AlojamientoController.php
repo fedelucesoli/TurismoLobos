@@ -19,7 +19,7 @@ class AlojamientoController extends Controller
     }
     public function index()
     {
-      $data['alojamientos'] = Alojamiento::all();
+      $data['alojamientos'] = Alojamiento::paginate(20);
       $data['categorias'] = Categoria::where('parent', 'alojamientos')->get();
 
       return view('admin.alojamiento.index', $data);
@@ -48,7 +48,7 @@ class AlojamientoController extends Controller
 
       $item = new Alojamiento;
       $item->nombre = $request->nombre;
-      $item->categoria = $request->categoria;
+      $item->categoria_id = $request->categoria;
 
       $item->direccion = $request->direccion;
       $item->localidad = $request->localidad;
@@ -61,7 +61,7 @@ class AlojamientoController extends Controller
       $item->lat = $request->lat;
 
       $item->activo = 0;
-      $item->id_usuario = $request->user()->id;
+      $item->usuario_id = $request->user()->id;
       $item->save();
       return redirect()->route('admin.alojamiento.show', $item)->with('success', 'Alojamiento creado!');
     }
@@ -69,6 +69,8 @@ class AlojamientoController extends Controller
     public function show(Alojamiento $alojamiento)
     {
       $data['item'] = $alojamiento;
+      $data['categorias'] = Categoria::where('parent', 'alojamientos')->get();
+
       $data['map'] = $this->mapa->showMarkerMap($data['item']);
       return view('admin.alojamiento.show', $data);
 
@@ -77,6 +79,8 @@ class AlojamientoController extends Controller
     public function edit(Alojamiento $alojamiento)
     {
         $data['item'] = $alojamiento;
+        $data['categorias'] = Categoria::where('parent', 'alojamientos')->get();
+
         $data['map'] = $this->mapa->showMarkerMap($data['item']);
 
         return view('admin.alojamiento.show', $data);
@@ -101,7 +105,7 @@ class AlojamientoController extends Controller
       $validator = $this->validate($request, $rules);
 
       $item->nombre = $request->nombre;
-      $item->categoria = $request->categoria;
+      $item->categoria_id = $request->categoria;
 
       $item->direccion = $request->direccion;
       $item->localidad = $request->localidad;
@@ -115,7 +119,7 @@ class AlojamientoController extends Controller
 
       // $item->estrellas = $request->estrellas;
 
-      $item->id_usuario = $request->user()->id;
+      $item->usuario_id = $request->user()->id;
       $item->save();
 
       return redirect()->route('admin.alojamiento.show', $alojamiento)->with('success', 'Alojamiento actualizado');

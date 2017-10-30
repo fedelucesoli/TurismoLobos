@@ -21,18 +21,8 @@ class Alojamiento extends Model
     'id_usuario'
     ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function categoria(){
+          return $this->belongsTo('App\Models\Categoria', 'categoria_id', 'id');
+      }
 
 }

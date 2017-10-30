@@ -44,7 +44,7 @@ class LugarController extends Controller
     $item = new Lugar;
     $item->fill($request->all());
     $item->activo = 1;
-    $item->id_usuario = $request->user()->id;
+    $item->usuario_id = $request->user()->id;
     $item->save();
 
     if ($item->save()) {
@@ -67,24 +67,11 @@ class LugarController extends Controller
     return view('admin.lugar.show', $data);
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Lugar  $lugar
-   * @return \Illuminate\Http\Response
-   */
   public function edit(Lugar $lugar)
   {
       //
   }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Lugar  $lugar
-   * @return \Illuminate\Http\Response
-   */
   public function update(Request $request, Lugar $lugar)
   {
     $item = Lugar::find($lugar->id);
@@ -98,7 +85,7 @@ class LugarController extends Controller
     $item->update($request->all());
 
     $item->activo = 1;
-    $item->id_usuario = $request->user()->id;
+    $item->usuario_id = $request->user()->id;
 
     if ($item->save()) {
       $request->session()->flash('status', 'Guardado!');

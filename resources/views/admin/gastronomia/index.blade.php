@@ -29,7 +29,7 @@
             <tr>
               {{-- <td style="vertical-align: middle"><h6>{{$item->id}}</h6></td> --}}
 
-              <td><h4 data-href="{{route('admin.gastronomia.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria}}</small></h4></td>
+              <td><h4 data-href="{{route('admin.gastronomia.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria->nombre}}</small></h4></td>
               <td style="vertical-align: middle">
                 @component('admin.partials.activo', ['item' => $item, 'url' => 'gastronomia'])
                 @endcomponent

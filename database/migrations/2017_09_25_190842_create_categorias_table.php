@@ -20,7 +20,9 @@ class CreateCategoriasTable extends Migration
         $table->string('slug')->unique();
         $table->string('parent');
 
-        $table->boolean('id_usuario');
+        $table->integer('usuario_id')->unsigned();
+        $table->foreign('usuario_id')->references('id')->on('users');
+        
         $table->timestamps();
         });
     }
