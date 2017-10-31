@@ -1,16 +1,22 @@
 @extends('layouts.admin')
 
-
 @section('content')
 
   @include('admin.partials.detalles-item', ['item' => $item, 'url' => 'admin.eventos'])
 
+
+
+<div class="col-md-12 text-center">
+  <img src="http://via.placeholder.com/700x250">
+  <hr>
+</div>
 <div class="col-md-10 col-md-offset-2">
 
   <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
   <h1>{{$item->titulo}}</h1>
   <hr>
 </div>
+
 <div class="col-md-12">
   {{ Form::open([
     'route' => ["admin.eventos.update", $item->id],

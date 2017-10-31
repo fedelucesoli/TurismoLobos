@@ -22,7 +22,7 @@ class CreateLugarsTable extends Migration
           $table->string('telefono')->nullable()	;
           $table->string('web')->nullable()	;
           $table->string('email')->nullable()	;
-          $table->integer('categoria_id')->unsigned();
+          $table->integer('categoria_id')->unsigned()->nullable();
           $table->foreign('categoria_id')->references('id')->on('categorias');
 
 
@@ -30,7 +30,7 @@ class CreateLugarsTable extends Migration
           $table->decimal('lat', 11, 7)->nullable()	;
 
           $table->boolean('activo')->default(0);
-          
+
           $table->integer('usuario_id')->unsigned();
           $table->foreign('usuario_id')->references('id')->on('users');
 

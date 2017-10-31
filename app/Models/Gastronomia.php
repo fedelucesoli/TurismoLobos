@@ -16,7 +16,7 @@ class Gastronomia extends Model
       'email',
       'lng',
       'lat',
-      'categoria',
+      'categoria_id',
       'activo',
       'id_usuario',
       'horarios'
