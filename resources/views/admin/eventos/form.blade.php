@@ -53,7 +53,7 @@
   <div class="form-group @if ($errors->has('descripcion')) has-error @endif">
     {{ Form::label('descripcion', "Descripción", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
-      {{ Form::textarea('descripcion', null, array('class' => 'form-control')) }}
+      {{ Form::textarea('descripcion', null, array('class' => 'form-control', 'id'=> 'summernote')) }}
       @if ($errors->has('descripcion'))<p class="help-block">{{ $errors->first('descripcion') }}</p>@endif
     </div>
   </div>
@@ -74,3 +74,14 @@
 
 
 @endsection
+@push('scripts')
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script>
+  $('#summernote').summernote({
+    height: 300,
+    minHeight: null,
+    maxHeight: null,
+  });
+</script>
+@endpush
