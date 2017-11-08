@@ -15,6 +15,20 @@ class LugarController extends Controller
   public function __construct(MapasRepository $MapaRepository){
   $this->middleware('auth');
   $this->mapa = $MapaRepository;
+  $this->localidades = array(
+    'Lobos' => 'Lobos',
+    'Emp. Lobos' => 'Emp. Lobos',
+    'Laguna de Lobos' => 'Laguna de Lobos',
+    'Villa Loguercio' => 'Villa Loguercio',
+    'Salvador Maria' => 'Salvador Maria',
+    'Elvira' => 'Elvira',
+    'A. Carboni' => 'A. Carboni',
+    'Arevalo' => 'Arevalo',
+    'La Porteña' => 'La Porteña',
+    'Paraje Barrientos' => 'Paraje Barrientos',
+    'Zapiola' => 'Zapiola',
+    'Las Chacras' => 'Las Chacras',
+  );
 }
   public function index()
   {
@@ -27,7 +41,7 @@ class LugarController extends Controller
   {
     $data['lugar'] = new Lugar;
     $data['map'] = $this->mapa->addMarkerMap();
-
+    $data['localidades'] = $this->localidades;
     $data['categorias'] = Categoria::where('parent', 'gastronomia')->get();
     return view('admin.lugar.form', $data);
   }

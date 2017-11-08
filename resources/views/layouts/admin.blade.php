@@ -48,7 +48,17 @@
             <div id="collapse1" class="panel-collapse collapse">
               <ul class="list-group">
                 <li class="list-group-item">Configuracion</li>
-                <li class="list-group-item">Cerrar Sesion</li>
+                <li class="list-group-item">
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
               </ul>
 
             </div>

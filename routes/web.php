@@ -7,7 +7,9 @@ Route::get('/ciudad', function () { return view('paginas/ciudad'); });
 Route::get('/donde/comer', function () { return view('paginas/donde-comer'); });
 
 Route::get('/donde/dormir', function () { return view('paginas/donde-dormir'); });
-Route::get('/eventos', function () { return view('paginas/eventos'); });
+
+Route::get('/eventos', 'WebController@eventos');
+
 Route::get('/contacto', function () { return view('paginas/contacto'); });
 Route::get('/turismo/activo', function () { return view('paginas/turismo-activo'); });
 Route::get('/turismo/laguna', function () { return view('paginas/turismo-laguna'); });

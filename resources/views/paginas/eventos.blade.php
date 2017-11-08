@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <header class="header-eventos"></header>
+  <header class="header-eventos"></header>
 
     <section class="container">
       <div class="row">
@@ -11,10 +10,26 @@
           <div class="top"></div>
         </div>
       </div>
-
+      <div class="row">
+        @foreach ($eventos as $evento)
+          <div class="col-md-6 col-xs-12">
+            <div class="evento evento-large">
+              <div class="back-img" style="background-image: url('uploads/img/logo-cuenca.jpg');">
+                <h4>{{$evento->titulo}}</h4>
+              </div>
+            <div class="col-izq">
+                <div class="detalles">
+                  <div class="fecha">Sábado 29 de Abril</div>
+                  {{-- <div class="link"><a href="https://www.facebook.com/olimpiadascuencadelsalado/" target="_blank">Ver cronograma</a></div> --}}
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
 
     </section>
-    <section class="container">
+    {{-- <section class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
           <h1>Eventos anteriores</h1>
@@ -232,7 +247,10 @@
 
       </div>
     </section>
+ --}}
 
-
+@if (Auth::check())
+  ADMIn
+@endif
 
 @endsection

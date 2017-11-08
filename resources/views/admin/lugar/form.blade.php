@@ -31,7 +31,7 @@
   <div class="form-group @if ($errors->has('localidad')) has-error @endif">
     {{ Form::label('localidad', "Localidad", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-8">
-      {{ Form::text('localidad', null, array('class' => 'form-control')) }}
+      {{ Form::select('localidad', $localidades, null, array('placeholder' => 'Localidades','class' => 'select form-control')) }}
       @if ($errors->has('localidad'))<p class="help-block">{{ $errors->first('localidad') }}</p>@endif
     </div>
   </div>
