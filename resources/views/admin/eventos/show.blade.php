@@ -2,14 +2,22 @@
 
 @section('content')
 
+  @component('admin.partials.modal', [
+    'titulo' => "Galeria de imágenes",
+    'include' => 'admin/forms/galeria',
+  ])
+  @endcomponent
   @include('admin.partials.detalles-item', ['item' => $item, 'url' => 'admin.eventos'])
 
 
 
 <div class="col-md-12 text-center">
-  <img src="http://via.placeholder.com/700x250">
+  <a href="" data-toggle="modal" data-target="#modal">
+    <img src="http://via.placeholder.com/700x250">
+  </a>
   <hr>
 </div>
+
 <div class="col-md-10 col-md-offset-2">
 
   <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
@@ -106,7 +114,7 @@
     ],
 
   });
-  
+
 
   </script>
 @endpush

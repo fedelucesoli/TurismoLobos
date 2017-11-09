@@ -37,7 +37,7 @@
 
     {{ Form::label('hora', "Hora", ['class' => 'control-label col-sm-2']) }}
     <div class="col-sm-3">
-      {{ Form::time('hora', null, array('class' => 'form-control')) }}
+      {{ Form::time('hora', "20:30", array('class' => 'form-control')) }}
       @if ($errors->has('hora'))<p class="help-block">{{ $errors->first('hora') }}</p>@endif
     </div>
   </div>
@@ -57,7 +57,7 @@
       @if ($errors->has('descripcion'))<p class="help-block">{{ $errors->first('descripcion') }}</p>@endif
     </div>
   </div>
-
+  @include('admin.forms.imagenes')
   <hr>
 
   <div class="form-group">

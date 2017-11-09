@@ -8,6 +8,8 @@ use App\Models\Lugar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Logic\ImageRepository;
+
 class EventoController extends Controller
 {
     public function __construct(){
@@ -58,9 +60,20 @@ class EventoController extends Controller
       // $item->subevento = $request->subevento;
       // $item->order_column = $request->order_column;
       // $item->fecha_fin = $request->fecha_fin;
+
+
       $item->activo = 0;
       $item->usuario_id = $request->user()->id;
       $item->save();
+
+      if($request->hasFile('imagenes')){
+          foreach ($request->imagenes as $photo) {
+              $request['file'] = $photo;
+              $request['id_item'] = $item->id;
+              $response = $imageRepository->upload($request);
+          }
+      }
+
       return redirect()->route('admin.eventos.show', $item)->with('success', 'Evento creado!');
 
     }
