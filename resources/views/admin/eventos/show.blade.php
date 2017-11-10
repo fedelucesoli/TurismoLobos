@@ -10,7 +10,6 @@
   @include('admin.partials.detalles-item', ['item' => $item, 'url' => 'admin.eventos'])
 
 
-
 <div class="col-md-12 text-center">
   <a href="" data-toggle="modal" data-target="#modal">
     <img src="http://via.placeholder.com/700x250">

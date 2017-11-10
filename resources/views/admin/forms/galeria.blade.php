@@ -9,7 +9,9 @@
   previewNode.parentNode.removeChild(previewNode);
 
   var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-    url: "/target-url", // Set the url
+    url: "/admin/image", // Set the url
+    headers: {'X-CSRF-TOKEN':"{{ csrf_token() }}"},
+    params: [{'id': "100"}],
     thumbnailWidth: 80,
     thumbnailHeight: 80,
     parallelUploads: 20,
@@ -21,7 +23,9 @@
 
   myDropzone.on("addedfile", function(file) {
     // Hookup the start button
-    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+    file.previewElement.querySelector(".start").onclick = function() {
+      myDropzone.enqueueFile(file);
+    };
   });
 
   // Update the total progress bar
@@ -29,10 +33,11 @@
     document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
   });
 
-  myDropzone.on("sending", function(file) {
+  myDropzone.on("sending", function(file, xhr, formData) {
     // Show the total progress bar when upload starts
     document.querySelector("#total-progress").style.opacity = "1";
     // And disable the start button
+    formData.append('id', 'bob');
     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
   });
 
@@ -57,10 +62,10 @@
     margin: 2em 0;
   }
   /* Mimic table appearance */
-  div.table {
+  .table {
     display: table;
   }
-  div.table .file-row {
+  .table .file-row {
     display: table-row;
   }
   div.table .file-row > div {
@@ -108,33 +113,32 @@
         <div class="col-lg-12">
           <!-- The fileinput-button span is used to style the file input field as button -->
           <span class="btn btn-success fileinput-button dz-clickable">
-              <i class="glyphicon glyphicon-plus"></i>
+              <i class="fa fa-plus"></i>
               <span>Agregar archivos</span>
           </span>
           <button type="submit" class="btn btn-primary start">
-              <i class="glyphicon glyphicon-upload"></i>
+              <i class="fa fa-upload"></i>
               <span>Subir</span>
           </button>
-          <button type="reset" class="btn btn-warning cancel">
-              <i class="glyphicon glyphicon-ban-circle"></i>
+          <button type="reset" class="btn btn-warning cancel" >
+              <i class="fa fa-times-circle-o"></i>
               <span>Cancelar</span>
           </button>
         </div>
 
-        <!-- <div class="col-lg-5">
+        <div class="col-lg-5">
 
           <span class="fileupload-process">
             <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
               <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress=""></div>
             </div>
           </span>
-        </div> -->
+        </div>
 
       </div>
 
 <!-- Dropzone Preview Template -->
 <div class="table table-striped" class="files row" id="previews">
-
 
  <div id="template" class="file-row">
 
@@ -144,10 +148,11 @@
 
 <div>
     <p class="name" data-dz-name></p>
+    <p class="size small bold" data-dz-size></p>
     <strong class="error text-danger" data-dz-errormessage></strong>
 </div>
 <div>
-    <p class="size" data-dz-size></p>
+
     <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
     </div>
@@ -158,11 +163,11 @@
       <span>Start</span>
   </button>
   <button data-dz-remove class="btn btn-warning cancel">
-      <i class="glyphicon glyphicon-ban-circle"></i>
+      <i class="fa fa-times-circle-o"></i>
       <span>Cancel</span>
   </button>
   <button data-dz-remove class="btn btn-danger delete">
-    <i class="glyphicon glyphicon-trash"></i>
+    <i class="fa fa-trash"></i>
     <span>Delete</span>
   </button>
 </div>

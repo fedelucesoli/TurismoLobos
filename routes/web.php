@@ -27,3 +27,5 @@ Route::resource('admin/eventos', 'Admin\EventoController', ['as' => 'admin']);
 Route::resource('admin/alojamiento', 'Admin\AlojamientoController', ['as' => 'admin']);
 Route::resource('admin/lugar', 'Admin\LugarController', ['as' => 'admin']);
 Route::resource('admin/categorias', 'Admin\CategoriaController', ['as' => 'admin']);
+
+Route::post('admin/image', 'Admin\ImageController@store')->name('admin');
