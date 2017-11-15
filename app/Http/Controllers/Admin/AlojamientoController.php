@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Logic\MapasRepository;
+use App\Logic\ImageRepository;
 
 class AlojamientoController extends Controller
 {
-    public function __construct(MapasRepository $MapaRepository){
+    public function __construct(MapasRepository $MapaRepository, ImageRepository $imageRepository){
 
       $this->middleware('auth');
       $this->mapa = $MapaRepository;
+      $this->imageRepository = $imageRepository;
 
     }
     public function index()
@@ -63,12 +65,23 @@ class AlojamientoController extends Controller
       $item->activo = 0;
       $item->usuario_id = $request->user()->id;
       $item->save();
+
+      if($request->hasFile('imagenes')){
+          foreach ($request->imagenes as $photo) {
+              $request['file'] = $photo;
+              $request['id_item'] = $item->id;
+              $data['response'] = $this->imageRepository->upload($request);
+          }
+      }
+
       return redirect()->route('admin.alojamiento.show', $item)->with('success', 'Alojamiento creado!');
     }
 
     public function show(Alojamiento $alojamiento)
     {
       $data['item'] = $alojamiento;
+      $data['imagenes'] = $alojamiento->imagenes;
+
       $data['categorias'] = Categoria::where('parent', 'alojamientos')->get();
 
       $data['map'] = $this->mapa->showMarkerMap($data['item']);

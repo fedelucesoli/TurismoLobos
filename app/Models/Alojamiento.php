@@ -25,4 +25,8 @@ class Alojamiento extends Model
           return $this->belongsTo('App\Models\Categoria', 'categoria_id', 'id');
       }
 
+    public function imagenes(){
+        return $this->hasMany('App\Models\Image', 'item_id', 'id');
+    }
+
 }

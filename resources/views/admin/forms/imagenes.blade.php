@@ -2,8 +2,6 @@
  <label class="control-label col-sm-2" for="imagenes">Imagenes</label>
  <div class="col-sm-10">
 
-
-       {{-- <input name="file" id="images" type="file" multiple /> --}}
        <div id="filediv">
          <input name="imagenes[]" type="file" id="file" multiple/>
        </div>
