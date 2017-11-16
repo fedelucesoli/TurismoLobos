@@ -8,7 +8,7 @@ $('tr[data-href]').on("click", function() {
 @endpush
 @section('content')
 <div class="col-md-6">
-  <h1>Lugares</h1>
+  <h1><i class="fa fa-map-o  " aria-hidden="true"> </i> &nbsp; Lugares</h1>
 </div>
 <div class="col-md-6 text-right">
   <a type="button" class="btn btn-default" style="margin-top: 20px;" href="{{route('admin.lugar.create')}}"  >Agregar Lugar</a>

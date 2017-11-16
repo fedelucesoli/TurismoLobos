@@ -38,13 +38,13 @@
       <div class="row">
         <div class="col-md-2">
           <div class="list-group">
-            <a href="{{route('admin.gastronomia.index')}}" class="list-group-item">Gastronomia</a>
-            <a href="{{route('admin.alojamiento.index')}}" class="list-group-item">Alojamiento</a>
-            <a href="{{route('admin.eventos.index')}}" class="list-group-item">Eventos</a>
-            <a href="{{route('admin.lugar.index')}}" class="list-group-item">Lugares</a>
+            <a href="{{route('admin.gastronomia.index')}}" class="list-group-item"> <i class="fa fa-cutlery  fa-fw" aria-hidden="true"> </i> &nbsp; Comer</a>
+            <a href="{{route('admin.alojamiento.index')}}" class="list-group-item"><i class="fa fa-hotel  fa-fw" aria-hidden="true"> </i> &nbsp; Dormir</a>
+            <a href="{{route('admin.eventos.index')}}" class="list-group-item"><i class="fa fa-calendar  fa-fw" aria-hidden="true"> </i> &nbsp; Eventos</a>
+            <a href="{{route('admin.lugar.index')}}" class="list-group-item"><i class="fa fa-map-o  fa-fw" aria-hidden="true"> </i> &nbsp; Lugares</a>
             {{-- <a href="{{route('admin.categorias.index')}}" class="list-group-item">Categorias</a> --}}
             <hr>
-            <a data-toggle="collapse" href="#collapse1"class="list-group-item">Usuario</a>
+            <a data-toggle="collapse" href="#collapse1"class="list-group-item"><i class="fa fa-user-o  fa-fw" aria-hidden="true"> </i> &nbsp;  Usuario</a>
             <div id="collapse1" class="panel-collapse collapse">
               <ul class="list-group">
                 <li class="list-group-item">Configuracion</li>
@@ -52,7 +52,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                        Logout
+                        Cerrar Sesión
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -8,7 +8,7 @@ $('h4[data-href]').on("click", function() {
 @endpush
 @section('content')
 <div class="col-md-6">
-  <h1>Eventos</h1>
+  <h1><i class="fa fa-calendar  fa-fw" aria-hidden="true"> </i>&nbsp;Eventos</h1>
 </div>
 <div class="col-md-6 text-right">
   <a type="button" class="btn btn-default" style="margin-top: 20px;" href="" data-toggle="modal" data-target="#modal">Categorias</a>

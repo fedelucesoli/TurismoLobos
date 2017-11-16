@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-md-6">
-  <h1>Alojamiento</h1>
+  <h1><i class="fa fa-hotel  fa-fw" aria-hidden="true"> </i>&nbsp;Alojamiento</h1>
 </div>
 <div class="col-md-6 text-right">
   <a type="button" class="btn btn-default" style="margin-top: 20px;" href="" data-toggle="modal" data-target="#modal">Categorias</a>

@@ -8,7 +8,6 @@
      @foreach($imagenes as $imagen)
        <img src='{{asset("uploads/full_size/$imagen->filename")}}'>
      @endforeach
-
     <hr>
   </div>
 
