@@ -65,7 +65,7 @@
   </div>
 
 @include('admin.forms.mapa')
-@include('admin.forms.imagenes')
+{{-- @include('admin.forms.imagenes') --}}
 
   <hr>
 

@@ -4,12 +4,12 @@
 
   @include('admin.partials.detalles-item', ['item' => $item, 'url' => 'admin.alojamiento'])
 
-  <div class="col-md-12 text-center">
+  {{-- <div class="col-md-12 text-center">
      @foreach($imagenes as $imagen)
        <img src='{{asset("uploads/full_size/$imagen->filename")}}'>
      @endforeach
     <hr>
-  </div>
+  </div> --}}
 
 <div class="col-md-10 col-md-offset-2">
 
