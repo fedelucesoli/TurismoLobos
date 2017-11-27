@@ -180,6 +180,7 @@ return [
         GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'Gmaps' => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
     ],
 

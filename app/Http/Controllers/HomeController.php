@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+              //retrieve visitors and pageview data for the current day and the last seven days
+        $data['analyticsData'] = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+
+        return view('home')->with($data);
     }
 }

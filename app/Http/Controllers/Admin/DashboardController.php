@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class DashboardController extends Controller
 {
@@ -23,6 +25,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin/dashboard');
+        $data['analyticsData'] = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+        $data['masvisitadas'] = Analytics::fetchMostVisitedPages(Period::days(7), $maxResults = 5);
+
+        return view('admin/dashboard')->with($data);
+
     }
 }
