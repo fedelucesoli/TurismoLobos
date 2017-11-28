@@ -11,15 +11,25 @@
         </div>
       </div>
       <div class="row">
+        {{-- {{ dd($eventos) }} --}}
         @foreach ($eventos as $evento)
           <div class="col-md-6 col-xs-12">
             <div class="evento evento-large">
-              <div class="back-img" style="background-image: url('uploads/img/logo-cuenca.jpg');">
+              @foreach($evento->imagen as $img)
+                <div class="back-img" style="background-image: url('{{asset("uploads/full_size/$img->filename")}}');">
+
+              @endforeach
+
                 <h4>{{$evento->titulo}}</h4>
               </div>
             <div class="col-izq">
                 <div class="detalles">
-                  <div class="fecha">Sábado 29 de Abril</div>
+                  <div class="fecha"> {{ $evento->fecha }}</div>
+                  <div class="hora">{{ $evento->hora }} hs</div>
+                  <div class="lugar">{{ $evento->lugarInfo->nombre }}</div>
+
+                  {{-- @foreach ($evento->lugarInfo as $lugar)
+                  @endforeach --}}
                   {{-- <div class="link"><a href="https://www.facebook.com/olimpiadascuencadelsalado/" target="_blank">Ver cronograma</a></div> --}}
                 </div>
               </div>

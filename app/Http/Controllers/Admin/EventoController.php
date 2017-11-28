@@ -12,9 +12,10 @@ use App\Logic\ImageRepository;
 
 class EventoController extends Controller
 {
-    public function __construct(){
+    public function __construct(ImageRepository $imageRepository){
 
       $this->middleware('auth');
+      $this->imageRepository = $imageRepository;
 
     }
 
@@ -70,7 +71,7 @@ class EventoController extends Controller
           foreach ($request->imagenes as $photo) {
               $request['file'] = $photo;
               $request['id_item'] = $item->id;
-              $response = $imageRepository->upload($request);
+              $response = $this->imageRepository->upload($request);
           }
       }
 
@@ -81,6 +82,7 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
       $data['item'] = $evento;
+      $data['imagenes'] = $evento->imagenes;
       $data['lugares'] = Lugar::all();
       $data['categorias'] = Categoria::where('parent', 'eventos')->get();
 

@@ -9,16 +9,21 @@
   @endcomponent
   @include('admin.partials.detalles-item', ['item' => $item, 'url' => 'admin.eventos'])
 
+    @isset($imagenes)
+      <div class="col-md-12 text-center">
 
-<div class="col-md-12 text-center">
-  <a href="" data-toggle="modal" data-target="#modal">
-    <img src="http://via.placeholder.com/700x250">
-  </a>
-  <hr>
-</div>
+      @foreach($imagenes as $imagen)
+        <img
+        src='{{asset("uploads/full_size/$imagen->filename")}}'
+        height="150px"
+        >
+
+      @endforeach
+      <hr>
+    </div>
+    @endisset
 
 <div class="col-md-10 col-md-offset-2">
-
   <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
   <h1>{{$item->titulo}}</h1>
   <hr>
@@ -86,7 +91,6 @@
     {{ Form::submit('Guardar', ['class'=>'btn btn-danger'] )}}
    </div>
   </div>
-
 
   {{ Form::close() }}
 

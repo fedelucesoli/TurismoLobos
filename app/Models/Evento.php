@@ -25,4 +25,13 @@ class Evento extends Model
   public function categoria(){
         return $this->belongsTo('App\Models\Categoria', 'categoria_id', 'id');
     }
+    public function imagen(){
+        return $this->hasMany('App\Models\Image', 'item_id', 'id');
+        //todo -- imagen ID -- ???
+    }
+
+    public function lugarInfo(){
+        return $this->hasOne('App\Models\Lugar', 'id', 'lugar_id');
+        //todo -- imagen ID -- ???
+    }
 }
