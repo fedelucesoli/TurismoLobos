@@ -17,7 +17,6 @@
             <div class="evento evento-large">
               @foreach($evento->imagen as $img)
                 <div class="back-img" style="background-image: url('{{asset("uploads/full_size/$img->filename")}}');">
-
               @endforeach
 
                 <h4>{{$evento->titulo}}</h4>

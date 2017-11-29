@@ -30,8 +30,8 @@
               <td><h4 data-href="{{route('admin.alojamiento.show', $item->id)}}">{{$item->nombre}} <small>{{$item->categoria->nombre}}</small></h4></td>
               <td style="vertical-align: middle">
 
-                // todo que no sea boton
-                
+                {{-- // todo que no sea boton --}}
+
                 <button
                   type="button"
                   onclick="toggleEstado()"

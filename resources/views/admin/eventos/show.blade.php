@@ -22,6 +22,11 @@
       <hr>
     </div>
     @endisset
+  @isset (!$imagenes)
+    <div class="col-md-12 text-center">
+      fede
+    <div>
+  @endisset
 
 <div class="col-md-10 col-md-offset-2">
   <h4 class="text-muted">{{$item->categoria->nombre}}</h4>
