@@ -25,6 +25,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $data['gastronomia'] = \App\Models\Gastronomia::count();
+        $data['alojamiento'] = \App\Models\Alojamiento::count();
+        $data['evento'] = \App\Models\Evento::count();
         $data['analyticsData'] = Analytics::fetchVisitorsAndPageViews(Period::days(7));
         $data['masvisitadas'] = Analytics::fetchMostVisitedPages(Period::days(7), $maxResults = 5);
 
