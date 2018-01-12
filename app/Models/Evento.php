@@ -39,7 +39,7 @@ class Evento extends Model
     }
 
     public function getFechaAttribute($fecha){
-      $carbon = new Carbon($fecha);
+      $carbon = new Date($fecha);
       // return $carbon->diffForHumans();
       Date::setLocale('es');
       return $carbon->format('l d \d\e F');
