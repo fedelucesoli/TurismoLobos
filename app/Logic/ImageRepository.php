@@ -105,7 +105,7 @@ class ImageRepository
         $sessionImage = new Image;
         $sessionImage->filename      = $allowed_filename;
         // $sessionImage->original_name = $originalName;
-        $sessionImage->item_id = $form_data['id_item'];
+        $sessionImage->item_id = $form_data['item_id'];
 
         $sessionImage->save();
 

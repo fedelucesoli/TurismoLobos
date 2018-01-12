@@ -9,9 +9,11 @@
         "barryvdh/laravel-debugbar": "~2.4",
         "genealabs/phpgmaps": "^0.4.1",
         "intervention/image": "^2.4",
+        "jenssegers/date": "^3.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "nesbot/carbon": "^1.22",
         "spatie/laravel-analytics": "^3.3",
         "webpatser/laravel-uuid": "2.*"
     },

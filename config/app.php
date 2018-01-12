@@ -181,6 +181,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
+
 
     ],
 
@@ -235,6 +237,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
+        'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

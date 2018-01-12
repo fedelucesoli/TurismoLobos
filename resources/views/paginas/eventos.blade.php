@@ -15,7 +15,7 @@
         @foreach ($eventos as $evento)
           <div class="col-md-6 col-xs-12">
             <div class="evento evento-large">
-              @foreach($evento->imagen as $img)
+              @foreach($evento->imagenes as $img)
                 <div class="back-img" style="background-image: url('{{asset("uploads/full_size/$img->filename")}}');">
               @endforeach
 

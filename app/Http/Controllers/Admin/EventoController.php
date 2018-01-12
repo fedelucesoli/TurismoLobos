@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Logic\ImageRepository;
+use Uuid;
+
 
 class EventoController extends Controller
 {
@@ -53,6 +55,7 @@ class EventoController extends Controller
       $item->fecha = $request->fecha;
       $item->hora = $request->hora;
       $item->categoria_id = $request->categoria;
+      $item->uuid = Uuid::generate();
 
       $item->lugar_id = $request->lugar;
 
@@ -70,7 +73,7 @@ class EventoController extends Controller
       if($request->hasFile('imagenes')){
           foreach ($request->imagenes as $photo) {
               $request['file'] = $photo;
-              $request['id_item'] = $item->id;
+              $request['item_id'] = $item->uuid;
               $response = $this->imageRepository->upload($request);
           }
       }

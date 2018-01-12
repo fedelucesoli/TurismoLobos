@@ -13,7 +13,7 @@ class WebController extends Controller
 
     public function eventos()
     {
-        $data['eventos'] = \App\Models\Evento::where('activo', true)->with(['lugarInfo:id,nombre', 'imagen'])->get();
+        $data['eventos'] = \App\Models\Evento::where('activo', true)->with(['lugarInfo:id,nombre', 'imagenes'])->get();
         return view('paginas.eventos')->with($data);
     }
 }
